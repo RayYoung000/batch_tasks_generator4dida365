@@ -1,37 +1,31 @@
 # batch_tasks_generator4dida365
 
-#### 介绍
-针对书籍、课程、电影和电视剧等多章节内容的滴答清单批量任务生成器，利用滴答清单邮箱生成任务，并包含“任务名+序号”形式的子任务。
-
-#### 软件架构
-软件架构说明
+## 介绍
+一个用于滴答清单批量任务生成的Python脚本，主要针对书籍、课程、电影和电视剧等多章节内容的，利用滴答清单邮箱生成任务，并包含“任务名+序号”形式的子任务。
 
 
-#### 安装教程
+## 安装教程
+1.  在*dida365_tasklist.py*中填写自己的邮箱地址，及其stmp服务器的账户、密码和地址，作为发送；（相关信息可以查看相应电子邮箱的stmp帮助）
+2.  在*dida365_tasklist.py*中填写滴答清单的邮箱地址，作为接收方。
+![image-20200225210952541](README.assets/image-20200225210952541.png)
+3. 在*dida365_tasklist.py*修改如下代码，自定义标题和内容的字符串生成格式
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+    ![image-20200225212527588](README.assets/image-20200225212527588.png)
 
-#### 使用说明
+## 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  在*dida365_tasklist.py*同目录下新建或修改*input.txt*，每一行表示一个任务，采用**<任务名>，<子任务数>**或**<任务名>，<子任务数>,<日期>** 格式编写，其中逗号为英文逗号，日期格式需要符合滴答清单智能识别规则;
+    ```markdown
+    西游记,100
+    超级玛丽,5,明天
+    ```
+    
+2.  在*dida365_tasklist.py*目录启动命令行，并执行该Python脚本;
 
-#### 参与贡献
+    ```powershell
+    python3 dida365_tasklist.py
+    ```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+3.  在滴答清单的客户端内修改任务属性，触发“描述”和“列表”的切换。
 
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+    ![image-20200225214856357](README.assets/image-20200225214856357.png)
