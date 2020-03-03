@@ -2,6 +2,7 @@
 from email.mime.text import MIMEText
 from email.header import Header
 import smtplib
+import time
 
 # 邮件发送函数
 def send_mail(subject_str, content_str):
@@ -52,5 +53,6 @@ for content in content_list:
     # with open("output.txt", "w") as file_handle:
         # file_handle.write(subject_str + '\n');
         # file_handle.write(msg_str + '\n');
+    time.sleep(5)
         
 
