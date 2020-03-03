@@ -29,12 +29,16 @@ with open("input.txt", "r") as file_handle:
     content_list = [];
     for str_in in content_str_all:
         str_in_spilted = str_in.split(',');
-        if len(str_in_spilted) == 2:
+        if len(str_in_spilted) == 1:
+            current_course = {'name':str_in_spilted[0].split('\n')[0]};
+        elif len(str_in_spilted) == 2:
             # 无<属性>
             current_course = {'name':str_in_spilted[0], 'pp':int(str_in_spilted[1].split('\n')[0])};
-        else:
+        elif len(str_in_spilted) == 3:
             # 有<属性>
             current_course = {'name':str_in_spilted[0], 'pp':int(str_in_spilted[1]), 'setting':str_in_spilted[2].split('\n')[0]};
+        else:
+            continue;
         content_list.append(current_course);
 # 生成邮件标题和内容
 for content in content_list:
@@ -45,11 +49,13 @@ for content in content_list:
         subject_str = subject_str + ' ' + content['setting'];
     # 生成邮件内容
     msg_str = '';
-    for pp in range(1, content['pp'] + 1):
-        msg_str = msg_str + content['name'] + ' 第' + str('%03d' %pp) + '集\n';
+    if len(content) >= 2 and content['pp'] > 0:
+        for pp in range(1, content['pp'] + 1):
+            msg_str = msg_str + content['name'] + ' 第' + str('%03d' %pp) + '集\n';
     # 发送邮件
     send_mail(subject_str, msg_str)
-    # 邮件标题和内容输出到文件
+    print(content['name'] + '\n')
+    # 邮件标题和内容输出到
     # with open("output.txt", "w") as file_handle:
         # file_handle.write(subject_str + '\n');
         # file_handle.write(msg_str + '\n');
