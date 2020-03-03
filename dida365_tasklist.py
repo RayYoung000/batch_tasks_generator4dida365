@@ -17,14 +17,14 @@ def send_mail(subject_str, content_str):
     msg['Subject'] = Header(subject_str)
     server = smtplib.SMTP_SSL(smtp_server, 465) # 启用SSL
     # server.set_debuglevel(1) # debug信息
-    # sserver.ehlo()
+    # server.ehlo()
     server.login(user_name, password)
     server.sendmail(from_addr, [to_addr], msg.as_string())
     server.quit()
 
 # 文件读取
 # <任务名>,<总集数>[,<属性>]
-with open("input.txt", "r") as file_handle:
+with open("input.txt", "r",encoding='utf-8') as file_handle:
     content_str_all = file_handle.readlines();
     content_list = [];
     for str_in in content_str_all:
